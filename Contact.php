@@ -3,10 +3,10 @@
 class Contact
 {
 	//Attributes
-	private $idContact;
-	private $nameContact;
+	private $id;
+	private $name;
 	private $phoneContact;
-	private $emailContact;
+	private $email;
 }
 
 ?>
