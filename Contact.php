@@ -8,14 +8,14 @@ class Contact
 		parent::Contact();
 	}
 
-	public function	__set($idContact)
+	public function	__set($id)
 	{
-		$this->$idContact;
+		$this->$id;
 	}
 
-	public function	__set($nameContact)
+	public function	__set($name)
 	{
-		$this->$nameContact;
+		$this->$name;
 	}
 
 	public function	__set($phoneContact)
@@ -23,20 +23,20 @@ class Contact
 		$this->$phoneContact;
 	}
 
-	public function	__set($emailContact)
+	public function	__set($email)
 	{
-		$this->$emailContact;
+		$this->$email;
 	}
 
 
-		public function	get($idContact)
+		public function	get($id)
 	{
-		return $this->$idContact;
+		return $this->$id;
 	}
 
-	public function	get($nameContact)
+	public function	get($name)
 	{
-		return $this->$nameContact;
+		return $this->$name;
 	}
 
 	public function	get($phoneContact)
@@ -44,9 +44,9 @@ class Contact
 		return $this->$phoneContact;
 	}
 
-	public function	get($emailContact)
+	public function	get($email)
 	{
-		return $this->$emailContact;
+		return $this->$email;
 	}
 }
 
