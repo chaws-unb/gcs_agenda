@@ -4,56 +4,46 @@ class Agenda
 {
     private $db = array();
         
-    /**
-     *	Delete contact from the agenda  
-     */
-    public function deleteContact($paramId)
-    {        
-        if(!isset($paramId))
+    public function deleteContact(Contact $contact)
+    {
+    	$paramId = $contact->getId();
+        if(isset($paramId))
         {
             unset($this->db[$paramId]);
         }
         else
         {
-            $errormsg = "There is no Contact for this ID!";
+            echo "There is no Contact for this ID!";
         }
     }
 
-    /**
-     *	Search a contact
-     */	
-	public function search(Contact $contact)
+	public function searchContact(Contact $contact)
 	{
-		$size = sizeof($db);
+		$size = sizeof($this->db);
 		for($i = 0; $i < $size; $i++)
 		{
-			$obj = $db[$i];
-			if($obj->name == $contact->name || 
-			   $obj->email == $contact->email ||
-			   $obj->phoneContact == $contact->phoneContact)
+			$obj = $this->db[$i];
+			if($obj->getName() == $contact->getName() || 
+			   $obj->getEmail() == $contact->getEmail() ||
+			   $obj->getPhoneContact() == $contact->getPhoneContact())
 				return $obj;
 		}
 	}
 	
-	/**
-	 *	Edit a Contact
-	 */
-    public function edit(Contact $contact)
+    public function editContact(Contact $contact)
     {
-		$obj = $db[$contact->$id];
-		$obj->name = $contact->name;
-		$obj->phoneContact = $contact->phoneContact;
-		$obj->email = $contact->email;    
+		$obj = $this->db[$contact->id];
+		$obj->setName($contact->name);
+		$obj->setPhoneContact($contact->getPhoneContact());
+		$obj->setEmail($contact->getEmail());    
+		$this->db[$contact->id] = $obj;
     }
 
-	/** 
-	 * Add contact from the agenda 
-	 */
-	public function addContact ($paramId, Contact $contact)
+	public function addContact(Contact $contact)
 	{
-		if(!isset($paramId) || !isset($contact))
+		if(isset($contact) && !isset($this->db[$contact->getId()]))
 		{
-			this->$db[&paramId] = $contact;
+			$this->db[$contact->getId()] = $contact;
 		}
 		else
 		{
