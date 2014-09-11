@@ -13,7 +13,7 @@ class Agenda
         }
         else
         {
-            echo "There is no Contact for this ID!";
+            echo "There is no Contact for this ID!\n";
         }
     }
 
@@ -22,32 +22,36 @@ class Agenda
 		$size = sizeof($this->db);
 		for($i = 0; $i < $size; $i++)
 		{
+			if(!isset($this->db[$i]))
+				continue;
 			$obj = $this->db[$i];
-			if($obj->getName() == $contact->getName() || 
+			if($obj->getId() == $contact->getId() ||
+			   $obj->getName() == $contact->getName() || 
 			   $obj->getEmail() == $contact->getEmail() ||
 			   $obj->getPhoneContact() == $contact->getPhoneContact())
 				return $obj;
 		}
+		return null;
 	}
 	
     public function editContact(Contact $contact)
     {
-		$obj = $this->db[$contact->id];
-		$obj->setName($contact->name);
+		$obj = $this->db[$contact->getId()];
+		$obj->setName($contact->getName());
 		$obj->setPhoneContact($contact->getPhoneContact());
 		$obj->setEmail($contact->getEmail());    
-		$this->db[$contact->id] = $obj;
+		$this->db[$contact->getId()] = $obj;
     }
 
 	public function addContact(Contact $contact)
 	{
-		if(isset($contact) && !isset($this->db[$contact->getId()]))
+		if(isset($contact))
 		{
 			$this->db[$contact->getId()] = $contact;
 		}
 		else
 		{
-			echo "Error: Contact not added. Null parameters.";
+			echo "Error: Contact not added. Null parameters.\n";
 		}
 	}
 }

@@ -9,22 +9,22 @@ class Contact
 
 	public function	setId($id)
 	{
-		$this->id;
+		$this->id = $id;
 	}
 
 	public function	setName($name)
 	{
-		$this->name;
+		$this->name = $name;
 	}
 
 	public function	setPhoneContact($phoneContact)
 	{
-		$this->phoneContact;
+		$this->phoneContact = $phoneContact;
 	}
 
 	public function	setEmail($email)
 	{
-		$this->email;
+		$this->email = $email;
 	}
 
 	public function	getId()
